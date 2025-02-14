@@ -99,7 +99,7 @@ const CourseVideos = () => {
   
   const playlist = courseData[id];
   // console.log(playlist.id);
-  const [selectedVideo, setSelectedVideo] = useState(playlist.videos[0]);
+  // const [selectedVideo, setSelectedVideo] = useState(playlist.videos[0]);
 
   if (!playlist) {
     return <h2 className="text-center text-red-500">Course Not Found</h2>;
