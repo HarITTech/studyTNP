@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        unlockbutton: "#FF00FF",
         color: {
           1: "#AC6AFF",
           2: "#FFC876",
@@ -33,6 +34,30 @@ export default {
           12: "#2E2A41",
           13: "#6C7275",
         },
+      },
+      keyframes: {
+        animate1: {
+          "0%": { left: "-100%" },
+          "100%": { left: "100%" },
+        },
+        animate2: {
+          "0%": { top: "-100%" },
+          "100%": { top: "100%" },
+        },
+        animate3: {
+          "0%": { right: "-100%" },
+          "100%": { right: "100%" },
+        },
+        animate4: {
+          "0%": { bottom: "-100%" },
+          "100%": { bottom: "100%" },
+        },
+      },
+      animation: {
+        animate1: "animate1 1s infinite linear",
+        animate2: "animate2 1s infinite linear .25s",
+        animate3: "animate3 1s infinite linear .5s",
+        animate4: "animate4 1s infinite linear .75s",
       },
       fontFamily: {
         sans: ["var(--font-sora)", ...fontFamily.sans],
