@@ -3,9 +3,14 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { heroBackground } from '../assets';
 import Header from './Header';
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 // import { courseData } from "../data/courseData";
 
+
+gsap.registerPlugin(ScrollTrigger);
 
 const courseData = {
     "0": {
@@ -110,16 +115,37 @@ const CourseVideoPlayer = () => {
           carouselRef.current.scrollBy({ left: 250, behavior: "smooth" });
         }
       };
+
+        useEffect(() => {
+          const cursor = document.getElementById("cursor");
+          document.addEventListener("mousemove", (event) => {
+            cursor.style.left = `${event.clientX - 100}px`;
+            cursor.style.top = `${event.clientY - 100}px`;
+          });
+      
+          gsap.to("#nav", {
+            backgroundColor: "#000",
+            height: "100px",
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: "#nav",
+              scroller: "body",
+              start: "top -10%",
+              end: "top -11%",
+              scrub: 1,
+            },
+          });
+        }, []);
     
   return (
 
     <div className="relative w-full h-screen overflow-y-auto">
 
         {/* Cursor */}
-      <div
+      {/* <div
         id="cursor"
         className="fixed h-[200px] w-[200px] bg-[#702295c1] opacity-40 blur-[50px] rounded-full z-10 pointer-events-none"
-      ></div>
+      ></div> */}
 
       {/* Background Image */}
       <img
@@ -145,6 +171,7 @@ const CourseVideoPlayer = () => {
 
       <div className="relative bg-black bg-opacity-45 w-full flex flex-col md:flex-row min-h-screen backdrop-blur-sm p-6 pt-24">
         {/* Left Panel: Fixed Course Info */}
+        
         <div className=" relative w-full md:w-3/4 p-4 shadow-lg h-full md:sticky md:top-28 mb-6 md:mb-0 border-[2px] border-[#484848ec] rounded-2xl">
             
                 <ReactPlayer url={video.videoUrl} controls width="100%" height="500px" />
