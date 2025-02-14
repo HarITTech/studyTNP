@@ -42,6 +42,7 @@ import { Routes, Route } from "react-router-dom";
 import ButtonGradient from "./assets/svg/ButtonGradient";
 import Home from "./components/Home";
 import CourseVideo from "./components/CourseVideo";
+import CourseVideoPlayer from "./components/CourseVideoPlayer";
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course/:id" element={<CourseVideo />} />
+        <Route path="/course/:playlistId/video/:videoId" element={<CourseVideoPlayer />} />
       </Routes>
       <ButtonGradient />
     </div>

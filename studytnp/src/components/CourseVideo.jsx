@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { heroBackground } from "../assets";
+import { useNavigate } from "react-router-dom";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -90,8 +91,14 @@ const courseData = {
 
 
 const CourseVideos = () => {
+
+  const navigate = useNavigate(); // Hook to navigate between pages
+
   const { id } = useParams();
+  const courseid = id;
+  
   const playlist = courseData[id];
+  // console.log(playlist.id);
   const [selectedVideo, setSelectedVideo] = useState(playlist.videos[0]);
 
   if (!playlist) {
@@ -239,7 +246,7 @@ const CourseVideos = () => {
               <div
                 key={video.id}
                 className="flex items-center bg-[#4e4e4eb2] rounded-xl hover:bg-[#6d6d6dd4] shadow-md p-4 cursor-pointer hover:shadow-xl transition"
-                onClick={() => setSelectedVideo(video)}
+                onClick={() => navigate(`/course/${courseid}/video/${video.id}`)}
               >
                 <img src={video.thumbnail} alt={video.title} className="w-32 h-20 object-cover rounded-lg mr-4" />
                 <div>
