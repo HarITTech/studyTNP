@@ -86,3 +86,63 @@
 .-rotate-360 {
   @apply rotate-[-360deg]
 }
+
+
+
+@layer utilities {
+  @keyframes animate1 {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  .animate-animate1 { animation: animate1 1s infinite; }
+
+  @keyframes animate2 {
+    0% { top: -100%; }
+    100% { top: 100%; }
+  }
+  .animate-animate2 { animation: animate2 1s infinite .25s; }
+
+  @keyframes animate3 {
+    0% { right: -100%; }
+    100% { right: 100%; }
+  }
+  .animate-animate3 { animation: animate3 1s infinite .5s; }
+
+  @keyframes animate4 {
+    0% { bottom: -100%; }
+    100% { bottom: 100%; }
+  }
+  .animate-animate4 { animation: animate4 1s infinite .75s; }
+}
+
+
+/* Scrollbar for WebKit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(72, 72, 72, 0.3); /* Track color */
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(72, 72, 72, 0.8); /* Thumb color */
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(72, 72, 72, 1); /* Darker color on hover */
+}
+
+
+.scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
